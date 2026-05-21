@@ -1,217 +1,512 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chandra Nainar | Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chandra Nainar | Backend Developer</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            background: #0f172a;
-            color: white;
-            line-height: 1.6;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
-        header {
-            background: #111827;
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-        }
+    :root {
+      --bg: #020617;
+      --card: rgba(15, 23, 42, 0.7);
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --primary: #38bdf8;
+      --border: rgba(148, 163, 184, 0.15);
+      --glow: rgba(56, 189, 248, 0.25);
+    }
 
-        nav {
-            display: flex;
-            justify-content: center;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top, #0f172a 0%, #020617 45%);
+      color: var(--text);
+      overflow-x: hidden;
+    }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-        }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: -1;
+    }
 
-        nav a {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+    header {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(18px);
+      background: rgba(2, 6, 23, 0.65);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
 
-        nav a:hover {
-            color: #38bdf8;
-        }
+    nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-        .hero {
-            text-align: center;
-            padding: 100px 20px;
-            background: linear-gradient(to right, #0f172a, #1e293b);
-            color: white;
-        }
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: white;
+    }
 
-        .hero img {
-            width: 170px;
-            height: 170px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #38bdf8;
-            margin-bottom: 20px;
-        }
+    .logo span {
+      color: var(--primary);
+    }
 
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 700;
-        }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
 
-        .hero p {
-            font-size: 1.2rem;
-        }
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: 0.3s;
+    }
 
-        .btn-primary {
-            background-color: #38bdf8;
-            border: none;
-        }
+    nav a:hover {
+      color: var(--primary);
+    }
 
-        .btn-primary:hover {
-            background-color: #0ea5e9;
-        }
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 24px;
+    }
 
-        section {
-            padding: 60px 10%;
-        }
+    .hero-container {
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 60px;
+      align-items: center;
+    }
 
-        h2 {
-            color: #38bdf8;
-            margin-bottom: 20px;
-            font-size: 32px;
-        }
+    .hero-text h1 {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 1.1;
+      margin-bottom: 18px;
+      font-weight: 800;
+    }
 
-        .card {
-            background: #1e293b;
-            padding: 25px;
-            border-radius: 12px;
-            margin-top: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+    .hero-text h1 span {
+      color: var(--primary);
+    }
 
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
+    .hero-text p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      max-width: 650px;
+      margin-bottom: 32px;
+    }
 
-        .skill {
-            background: #334155;
-            padding: 10px 18px;
-            border-radius: 30px;
-        }
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
 
-        footer {
-            text-align: center;
-            background: #111827;
-            padding: 20px;
-            margin-top: 40px;
-            color: #94a3b8;
-        }
+    .btn {
+      padding: 14px 28px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: white;
+      transition: 0.3s ease;
+      font-weight: 600;
+    }
 
-        a {
-            color: #38bdf8;
-        }
-    </style>
+    .btn.primary {
+      background: var(--primary);
+      color: black;
+      box-shadow: 0 0 30px var(--glow);
+    }
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .hero-image {
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-image img {
+      width: 320px;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 30px;
+      border: 2px solid rgba(56, 189, 248, 0.4);
+      box-shadow: 0 0 60px rgba(56, 189, 248, 0.15);
+    }
+
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 110px 24px;
+    }
+
+    .section-title {
+      font-size: 2.4rem;
+      margin-bottom: 50px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: "";
+      width: 60%;
+      height: 4px;
+      background: var(--primary);
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      border-radius: 10px;
+    }
+
+    .glass {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      backdrop-filter: blur(16px);
+      padding: 35px;
+      transition: 0.3s ease;
+    }
+
+    .glass:hover {
+      transform: translateY(-5px);
+      border-color: rgba(56, 189, 248, 0.35);
+    }
+
+    .about p {
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 1.05rem;
+      margin-bottom: 18px;
+    }
+
+    .highlight {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 18px;
+    }
+
+    .skill-card {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      text-align: center;
+      transition: 0.3s;
+      font-weight: 600;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56, 189, 248, 0.4);
+      color: var(--primary);
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+
+    .project-card h3 {
+      margin-bottom: 14px;
+      font-size: 1.3rem;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .journey {
+      display: grid;
+      gap: 24px;
+    }
+
+    .journey-item {
+      border-left: 3px solid var(--primary);
+      padding-left: 20px;
+    }
+
+    .journey-item h3 {
+      margin-bottom: 8px;
+    }
+
+    .journey-item p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .contact-card {
+      text-align: center;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .contact-links a {
+      text-decoration: none;
+      color: white;
+      padding: 12px 22px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: 0.3s;
+    }
+
+    .contact-links a:hover {
+      background: var(--primary);
+      color: black;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      margin-top: 80px;
+    }
+
+    @media(max-width: 768px) {
+      nav ul {
+        gap: 14px;
+      }
+
+      .hero {
+        padding-top: 140px;
+      }
+
+      .hero-image img {
+        width: 260px;
+        height: 260px;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <nav>
+      <div class="logo">CHANDRU<span>.DEV</span></div>
 
-    <div class="hero text-center">
-        <img src="pic.jpg" alt="Chandra Nainar" class="rounded-circle mb-4" style="width: 150px; height: 150px;">
-        <h1>Chandra Nainar</h1>
-        <p>Python Backend Developer | FastAPI | React | DevOps Learner</p>
-        <a href="#contact" class="btn btn-primary mt-3">Contact Me</a>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#journey">Journey</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-container">
+
+      <div class="hero-text">
+        <h1>
+          Building systems with
+          <span>logic, curiosity,</span>
+          and creativity.
+        </h1>
+
+        <p>
+          I'm <span class="highlight">Chandra Nainar</span>, a backend-focused developer who enjoys building APIs,
+          understanding architecture, automating workflows, and exploring deep technical concepts.
+          I work with Python, FastAPI, Docker, React, PostgreSQL, Redis, Celery, and GitHub Actions.
+        </p>
+
+        <div class="buttons">
+          <a href="#projects" class="btn primary">View Projects</a>
+          <a href="#contact" class="btn">Contact Me</a>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <img src="pic.jpg" alt="Chandra Nainar">
+      </div>
+
     </div>
+  </section>
 
-    <section id="about" class="container my-5">
-        <h2 class="text-center text-primary">About Me</h2>
-        <div class="card p-4">
-            <p>
-                I am Chandra Nainar, a B.Sc Computer Science graduate passionate about
-                backend development, software architecture, automation, and learning
-                deep technical concepts.
-            </p>
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
 
-            <br>
+    <div class="glass about">
+      <p>
+        I started with simple HTML pages and curiosity-driven learning.
+        Over time, that curiosity evolved into a strong interest in backend systems,
+        automation, APIs, and software architecture.
+      </p>
 
-            <p>
-                I work mainly with Python and FastAPI, and I also have experience
-                with React, Docker, PostgreSQL, Redis, Celery, GitHub Actions,
-                and API integrations.
-            </p>
+      <p>
+        I enjoy understanding how systems work internally — from request handling and databases
+        to asynchronous task queues and deployment pipelines.
+      </p>
 
-            <br>
+      <p>
+        Beyond coding, I enjoy reading historical Tamil novels, learning concepts deeply,
+        exploring ideas across domains, and building meaningful projects that reflect my thinking.
+      </p>
+    </div>
+  </section>
 
-            <p>
-                I enjoy solving problems, understanding system design,
-                and continuously improving my technical knowledge.
-            </p>
-        </div>
-    </section>
+  <section id="skills">
+    <h2 class="section-title">Skills & Technologies</h2>
 
-    <section id="skills" class="container my-5">
-        <h2 class="text-center text-primary">Skills</h2>
-        <div class="row text-center">
-            <div class="col-md-3 col-sm-6 mb-3">Python</div>
-            <div class="col-md-3 col-sm-6 mb-3">FastAPI</div>
-            <div class="col-md-3 col-sm-6 mb-3">React</div>
-            <div class="col-md-3 col-sm-6 mb-3">Docker</div>
-            <!-- Add more skills as needed -->
-        </div>
-    </section>
+    <div class="skills-grid">
+      <div class="skill-card">Python</div>
+      <div class="skill-card">FastAPI</div>
+      <div class="skill-card">React</div>
+      <div class="skill-card">Docker</div>
+      <div class="skill-card">Git & GitHub</div>
+      <div class="skill-card">GitHub Actions</div>
+      <div class="skill-card">REST APIs</div>
+      <div class="skill-card">PostgreSQL</div>
+      <div class="skill-card">SQLite</div>
+      <div class="skill-card">Redis</div>
+      <div class="skill-card">Celery</div>
+      <div class="skill-card">Linux</div>
+      <div class="skill-card">HTML & CSS</div>
+      <div class="skill-card">Java</div>
+      <div class="skill-card">System Design</div>
+      <div class="skill-card">Problem Solving</div>
+    </div>
+  </section>
 
-    <section id="projects" class="container my-5">
-        <h2 class="text-center text-primary">Projects</h2>
-        <div class="card p-4 mb-3">
-            <h3>Post Office Management System</h3>
-            <p>Developed a management system with login and registration modules to manage post office operations efficiently.</p>
-        </div>
-        <div class="card p-4 mb-3">
-            <h3>Tamil Nadu Weather Map Project</h3>
-            <p>Interactive web application showing Tamil Nadu districts with weather details, humidity, airflow direction, and forecasts.</p>
-        </div>
-    </section>
+  <section id="projects">
+    <h2 class="section-title">Projects</h2>
 
-    <section id="contact" class="container my-5">
-        <h2 class="text-center text-primary">Contact</h2>
-        <div class="card p-4">
-            <p>Email: yourmail@gmail.com</p>
-            <p>GitHub: <a href="https://github.com/Chandranainar" target="_blank">github.com/Chandranainar</a></p>
-            <p>Location: Tamil Nadu, India</p>
-        </div>
-    </section>
+    <div class="projects">
 
-    <footer class="text-center py-3 bg-dark text-light">
-        <p>© 2026 Chandra Nainar. All Rights Reserved.</p>
-    </footer>
+      <div class="glass project-card">
+        <h3>Post Office Management System</h3>
+        <p>
+          Developed a management system with authentication modules and operational workflows
+          for handling post office related activities efficiently.
+        </p>
+      </div>
+
+      <div class="glass project-card">
+        <h3>Tamil Nadu Weather Map</h3>
+        <p>
+          Interactive district-based weather application displaying humidity,
+          airflow direction, reports, and forecasts using dynamic web interfaces.
+        </p>
+      </div>
+
+      <div class="glass project-card">
+        <h3>Automation & Backend Workflows</h3>
+        <p>
+          Worked with API integrations, Dockerized applications, asynchronous task processing,
+          and GitHub Actions based automation pipelines.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="journey">
+    <h2 class="section-title">Learning Journey</h2>
+
+    <div class="journey">
+
+      <div class="glass journey-item">
+        <h3>From Curiosity to Systems Thinking</h3>
+        <p>
+          Started with learning basic programming and gradually moved toward understanding
+          architecture, backend communication, deployment, and scalable workflows.
+        </p>
+      </div>
+
+      <div class="glass journey-item">
+        <h3>Continuous Learning Mindset</h3>
+        <p>
+          I enjoy combining concepts from different domains and exploring how knowledge compounds.
+          I believe deep understanding creates better creativity and stronger engineering intuition.
+        </p>
+      </div>
+
+      <div class="glass journey-item">
+        <h3>Current Focus</h3>
+        <p>
+          Backend engineering, automation systems, distributed workflows, Linux environments,
+          and building meaningful software with clean architecture.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Contact</h2>
+
+    <div class="glass contact-card">
+      <p>
+        Open to collaboration, backend development opportunities,
+        and meaningful technical discussions.
+      </p>
+
+      <div class="contact-links">
+        <a href="mailto:yourmail@gmail.com">Email</a>
+        <a href="https://github.com/Chandranainar" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Chandra Nainar • Built with curiosity and continuous learning.</p>
+  </footer>
 
 </body>
-
 </html>
