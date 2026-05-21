@@ -14,7 +14,7 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             background: #0f172a;
             color: white;
             line-height: 1.6;
@@ -51,7 +51,9 @@
 
         .hero {
             text-align: center;
-            padding: 60px 20px;
+            padding: 100px 20px;
+            background: linear-gradient(to right, #0f172a, #1e293b);
+            color: white;
         }
 
         .hero img {
@@ -64,13 +66,21 @@
         }
 
         .hero h1 {
-            font-size: 42px;
+            font-size: 3rem;
+            font-weight: 700;
         }
 
         .hero p {
-            color: #cbd5e1;
-            margin-top: 10px;
-            font-size: 18px;
+            font-size: 1.2rem;
+        }
+
+        .btn-primary {
+            background-color: #38bdf8;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0ea5e9;
         }
 
         section {
@@ -88,6 +98,7 @@
             padding: 25px;
             border-radius: 12px;
             margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .skills {
@@ -114,6 +125,9 @@
             color: #38bdf8;
         }
     </style>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -129,16 +143,16 @@
         </nav>
     </header>
 
-    <div class="hero">
-        <img src="pic.jpg" alt="Chandra Nainar">
+    <div class="hero text-center">
+        <img src="pic.jpg" alt="Chandra Nainar" class="rounded-circle mb-4" style="width: 150px; height: 150px;">
         <h1>Chandra Nainar</h1>
         <p>Python Backend Developer | FastAPI | React | DevOps Learner</p>
+        <a href="#contact" class="btn btn-primary mt-3">Contact Me</a>
     </div>
 
-    <section id="about">
-        <h2>About Me</h2>
-
-        <div class="card">
+    <section id="about" class="container my-5">
+        <h2 class="text-center text-primary">About Me</h2>
+        <div class="card p-4">
             <p>
                 I am Chandra Nainar, a B.Sc Computer Science graduate passionate about
                 backend development, software architecture, automation, and learning
@@ -162,58 +176,39 @@
         </div>
     </section>
 
-    <section id="skills">
-        <h2>Skills</h2>
-
-        <div class="skills">
-            <div class="skill">Python</div>
-            <div class="skill">FastAPI</div>
-            <div class="skill">Java</div>
-            <div class="skill">HTML</div>
-            <div class="skill">CSS</div>
-            <div class="skill">React</div>
-            <div class="skill">Docker</div>
-            <div class="skill">PostgreSQL</div>
-            <div class="skill">Redis</div>
-            <div class="skill">Celery</div>
-            <div class="skill">Git</div>
-            <div class="skill">GitHub Actions</div>
-            <div class="skill">REST APIs</div>
-            <div class="skill">Problem Solving</div>
+    <section id="skills" class="container my-5">
+        <h2 class="text-center text-primary">Skills</h2>
+        <div class="row text-center">
+            <div class="col-md-3 col-sm-6 mb-3">Python</div>
+            <div class="col-md-3 col-sm-6 mb-3">FastAPI</div>
+            <div class="col-md-3 col-sm-6 mb-3">React</div>
+            <div class="col-md-3 col-sm-6 mb-3">Docker</div>
+            <!-- Add more skills as needed -->
         </div>
     </section>
 
-    <section id="projects">
-        <h2>Projects</h2>
-
-        <div class="card">
+    <section id="projects" class="container my-5">
+        <h2 class="text-center text-primary">Projects</h2>
+        <div class="card p-4 mb-3">
             <h3>Post Office Management System</h3>
-            <p>
-                Developed a management system with login and registration modules
-                to manage post office operations efficiently.
-            </p>
+            <p>Developed a management system with login and registration modules to manage post office operations efficiently.</p>
         </div>
-
-        <div class="card">
+        <div class="card p-4 mb-3">
             <h3>Tamil Nadu Weather Map Project</h3>
-            <p>
-                Interactive web application showing Tamil Nadu districts with
-                weather details, humidity, airflow direction, and forecasts.
-            </p>
+            <p>Interactive web application showing Tamil Nadu districts with weather details, humidity, airflow direction, and forecasts.</p>
         </div>
     </section>
 
-    <section id="contact">
-        <h2>Contact</h2>
-
-        <div class="card">
+    <section id="contact" class="container my-5">
+        <h2 class="text-center text-primary">Contact</h2>
+        <div class="card p-4">
             <p>Email: yourmail@gmail.com</p>
-            <p>GitHub: github.com/Chandranainar</p>
+            <p>GitHub: <a href="https://github.com/Chandranainar" target="_blank">github.com/Chandranainar</a></p>
             <p>Location: Tamil Nadu, India</p>
         </div>
     </section>
 
-    <footer>
+    <footer class="text-center py-3 bg-dark text-light">
         <p>© 2026 Chandra Nainar. All Rights Reserved.</p>
     </footer>
 
